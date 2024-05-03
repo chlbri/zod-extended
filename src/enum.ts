@@ -22,9 +22,7 @@ export function createEnum<
 
 export function createEnum<T extends readonly []>(values: T): z.ZodNever;
 
-export function createEnum<T extends readonly z.Primitive[]>(
-  values: T
-) {
+export function createEnum<T extends readonly z.Primitive[]>(values: T) {
   if (values.length > 1) {
     return createManyUnion(
       values as typeof values &
