@@ -12,7 +12,7 @@ export default defineConfig({
       enabled: true,
       extension: 'ts',
       all: true,
-      exclude: ['**/types.ts', '**/index.ts'],
+      include: ['src/enum.ts'],
       provider: 'v8',
     },
   },
