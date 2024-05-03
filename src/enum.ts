@@ -13,17 +13,17 @@ function createManyUnion<
 }
 
 export function createEnum<T extends readonly [z.Primitive]>(
-  values: T,
+  ...values: T
 ): z.ZodLiteral<T[0]>;
 
 export function createEnum<
   T extends readonly [z.Primitive, z.Primitive, ...z.Primitive[]],
->(values: T): z.ZodUnion<MappedZodLiterals<T>>;
+>(...values: T): z.ZodUnion<MappedZodLiterals<T>>;
 
 export function createEnum<T extends readonly []>(values: T): z.ZodNever;
 
 export function createEnum<T extends readonly z.Primitive[]>(
-  values: T
+  ...values: T
 ) {
   if (values.length > 1) {
     return createManyUnion(
