@@ -1,6 +1,6 @@
 {
-  "name": "//TODO: to define",
-  "version": "0,0.1",
+  "name": "@bemedev/zod-extended",
+  "version": "0.0.1",
   "description": "Great NPM Library",
   "author": {
     "email": "bri_lvi@icloud.com",
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "//TODO: to define"
+    "url": "https://github.com/chlbri/zod-extended"
   },
   "license": "MIT",
   "type": "module",
@@ -25,11 +25,10 @@
   "typings": "lib/index.d.ts",
   "module": "lib/index.js",
   "keywords": [
-    "For",
-    "creating",
-    "new",
-    "npm",
-    "package"
+    "zod",
+    "enum",
+    "primitive",
+    "type testing"
   ],
   "files": [
     "lib",
