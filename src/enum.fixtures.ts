@@ -10,12 +10,12 @@ import {
   TRANSPARENCY_DIGITS,
 } from './enum.data.fixtures';
 
-export const tDIgits = createEnum(...DIGITS);
-export const tTransparency = createEnum(...TRANSPARENCY_DIGITS);
-export const tNumbers = createEnum(...COLOR_NUMBERS);
-export const tStrings = createEnum(...COLOR_STRINGS);
-export const tCSS = createEnum(...CSS_COLORS);
-export const tColorsHex = createEnum(...COLORS_HEX);
+export const tDIgits = createEnum(DIGITS);
+export const tTransparency = createEnum(TRANSPARENCY_DIGITS);
+export const tNumbers = createEnum(COLOR_NUMBERS);
+export const tStrings = createEnum(COLOR_STRINGS);
+export const tCSS = createEnum(CSS_COLORS);
+export const tColorsHex = createEnum(COLORS_HEX);
 
 export const createBoolean = <T extends z.ZodTypeAny>(zod: T) => {
   return (arg: any) => zod.safeParse(arg).success;

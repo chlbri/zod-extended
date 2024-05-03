@@ -5,7 +5,7 @@ import { createEnum } from './enum';
 import { toTestArgs } from './enum.fixtures';
 
 const createFn = <T extends z.Primitive[]>(...args: T) => {
-  const zod = createEnum(...(args as any));
+  const zod = createEnum(args as any);
   return (arg: string) => zod._def.typeName === arg;
 };
 
@@ -17,11 +17,6 @@ const createTests = <T extends z.Primitive[]>(...args: T) => {
     return useTests(...testArgs);
   };
 };
-
-describe('#1 => Zero arg', () => {
-  const useTests = createTests();
-  useTests(['ZodNever', true], ['Any', false], ['ZodString', false]);
-});
 
 console.log(z.string()._def.typeName);
 
