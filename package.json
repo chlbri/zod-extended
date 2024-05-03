@@ -25,11 +25,10 @@
   "typings": "lib/index.d.ts",
   "module": "lib/index.js",
   "keywords": [
-    "For",
-    "creating",
-    "new",
-    "npm",
-    "package"
+    "zod",
+    "enum",
+    "primitive",
+    "type testing"
   ],
   "files": [
     "lib",
