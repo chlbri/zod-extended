@@ -20,7 +20,9 @@ export function createEnum<
   T extends readonly [z.Primitive, z.Primitive, ...z.Primitive[]],
 >(...values: T): z.ZodUnion<MappedZodLiterals<T>>;
 
-export function createEnum<T extends readonly []>(...values: T): z.ZodNever;
+export function createEnum<T extends readonly []>(
+  ...values: T
+): z.ZodNever;
 
 export function createEnum<T extends readonly z.Primitive[]>(
   ...values: T
