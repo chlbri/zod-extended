@@ -12,7 +12,7 @@ export default defineConfig({
       enabled: true,
       extension: 'ts',
       all: true,
-      include: ['src/enum.ts'],
+      include: ['src/enum.ts', 'src/zodKeys.ts'],
       provider: 'v8',
     },
   },

@@ -1,8 +1,5 @@
 import { z } from 'zod';
-
-export type MappedZodLiterals<T extends readonly z.Primitive[]> = {
-  -readonly [K in keyof T]: z.ZodLiteral<T[K]>;
-};
+import type { MappedZodLiterals } from './types';
 
 function createManyUnion<
   A extends Readonly<[z.Primitive, z.Primitive, ...z.Primitive[]]>,

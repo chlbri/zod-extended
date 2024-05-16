@@ -7,6 +7,7 @@ import typescript from 'rollup-plugin-typescript2';
 
 const ignore = [
   '**/*.test.ts',
+  '**/*.test-d.ts',
   '**/*.fixtures.ts',
   '**/*.data.fixtures.ts',
   './src/config/**/*.ts',
@@ -15,7 +16,7 @@ const ignore = [
 
 const input = Object.fromEntries(
   globSync('src/**/*.ts', {
-    ignore,
+    ignore: ['src/types.ts', ...ignore],
   }).map(file => [
     // This remove `src/` as well as the file extension from each
     // file, so e.g. src/nested/foo.js becomes nested/foo
