@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import type { KeysMatching, Ru } from './types';
+import type { KeysMatchingWithArray } from './types';
 
 /**
  * From {@link https://github.com/colinhacks/zod/discussions/2134#discussioncomment-5194111 navtoj}.
@@ -32,15 +32,9 @@ export const _zodKeys = <T extends z.ZodTypeAny>(schema: T): string[] => {
   return [];
 };
 
-export const zodKeys = <T extends z.ZodTypeAny>(schema: T) => {
+export const zodObjectKeys = <T extends z.AnyZodObject>(schema: T) => {
   const out = _zodKeys(schema);
   type Inferred = z.infer<T>;
-  type _Out = Inferred extends Ru
-    ? KeysMatching<Inferred, false>[]
-    : Inferred extends Array<Ru>
-      ? KeysMatching<Inferred[number], false>[]
-      : string[];
 
-  type Out = _Out extends never[] ? string[] : _Out;
-  return out as Out;
+  return out as KeysMatchingWithArray<Inferred>[];
 };

@@ -33,18 +33,18 @@ export type MappedZodLiterals<T extends readonly z.Primitive[]> = {
 
 export type Ru = Record<string, unknown>;
 
-export type KeysMatching<
+type _KeysMatchingWithArray<
   T extends Ru,
-  AddObjectKeys extends boolean = true,
   Key = keyof T,
 > = Key extends string
   ? T[Key] extends Ru
-    ?
-        | `${Key}.${KeysMatching<T[Key], AddObjectKeys>}`
-        | (AddObjectKeys extends true ? Key : never)
+    ? `${Key}.${_KeysMatchingWithArray<T[Key]>}`
     : T[Key] extends Array<Ru>
-      ?
-          | `${Key}.${KeysMatching<T[Key][number], AddObjectKeys>}`
-          | (AddObjectKeys extends true ? Key : never)
+      ? `${Key}.${_KeysMatchingWithArray<T[Key][number]>}`
       : Key
   : never;
+
+export type KeysMatchingWithArray<T extends Ru> =
+  _KeysMatchingWithArray<T> extends never
+    ? string
+    : _KeysMatchingWithArray<T>;

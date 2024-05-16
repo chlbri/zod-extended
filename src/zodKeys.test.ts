@@ -5,7 +5,7 @@ import { describe } from 'node:test';
 import tsd, { formatter } from 'tsd';
 import { expect, test } from 'vitest';
 import { z } from 'zod';
-import { zodKeys } from './zodKeys';
+import { zodObjectKeys } from './zodKeys';
 import { ttest1, ttest2, ttest3, ttest4 } from './zodKeys.fixtures';
 
 test('#0 => Types', async () => {
@@ -23,7 +23,7 @@ test('#0 => Types', async () => {
 });
 
 describe('#1 => Function', () => {
-  const useTests = createTests<Fc>(zodKeys);
+  const useTests = createTests<Fc>(zodObjectKeys);
 
   useTests(
     ['boolean', [z.boolean()], []],
