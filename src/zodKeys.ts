@@ -7,12 +7,12 @@ import type { KeysMatchingWithArray } from './types';
  * @param schema The schema to return keys
  * @returns A string array of all keys of schema
  */
-export const _zodKeys = <T extends z.ZodTypeAny>(schema: T): string[] => {
+export const zodKeys = <T extends z.ZodTypeAny>(schema: T): string[] => {
   // check if schema is nullable or optional
   if (schema instanceof z.ZodNullable || schema instanceof z.ZodOptional)
-    return _zodKeys(schema.unwrap());
+    return zodKeys(schema.unwrap());
   // check if schema is an array
-  if (schema instanceof z.ZodArray) return _zodKeys(schema.element);
+  if (schema instanceof z.ZodArray) return zodKeys(schema.element);
   // check if schema is an object
   if (schema instanceof z.ZodObject) {
     // get key/value pairs from schema
@@ -20,7 +20,7 @@ export const _zodKeys = <T extends z.ZodTypeAny>(schema: T): string[] => {
     // loop through key/value pairs
     return entries.flatMap(([key, value]) => {
       // get nested keys
-      const nested = _zodKeys(value as any).map(
+      const nested = zodKeys(value as any).map(
         subKey => `${key}.${subKey}`,
       );
 
@@ -32,9 +32,13 @@ export const _zodKeys = <T extends z.ZodTypeAny>(schema: T): string[] => {
   return [];
 };
 
+/**
+ * Same as {@link zodKeys}, but for {@link z.AnyZodObject}
+ * @returns It's stringly type
+ */
 export const zodObjectKeys = <T extends z.AnyZodObject>(schema: T) => {
-  const out = _zodKeys(schema);
+  const out = zodKeys(schema);
   type Inferred = z.infer<T>;
 
-  return out as KeysMatchingWithArray<Inferred>[];
+  return out as KeysMatchingWithArray<Inferred>;
 };

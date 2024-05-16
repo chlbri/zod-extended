@@ -46,5 +46,5 @@ type _KeysMatchingWithArray<
 
 export type KeysMatchingWithArray<T extends Ru> =
   _KeysMatchingWithArray<T> extends never
-    ? string
-    : _KeysMatchingWithArray<T>;
+    ? []
+    : TuplifyUnion<_KeysMatchingWithArray<T>>;
